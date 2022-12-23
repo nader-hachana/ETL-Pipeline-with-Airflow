@@ -15,8 +15,8 @@ dags_folder = /home/nader/airflow/dags ==> dags_folder = /mnt/c/Users/Nader Hach
 >airflow dags trigger  [-v or --verbose] ETL_Pipeline
 
 # Visualize the result on the terminal
->airflow dags show podcast_summary
+>airflow dags show ETL_Pipeline
 
 # Save the Dag graph as an image on the local directory
 >sudo apt-get install graphviz
->airflow dags show podcast_summary --save podcast_summary.png
+>airflow dags show podcast_summary --save ETL_Pipeline.png
