@@ -31,16 +31,18 @@ unzip_data = BashOperator(
     task_id='unzip_data',
     bash_command='tar -xvzf tolldata.tgz -C ./data/',
     dag=dag,
-    cwd=dag.folder # the cwd option is to set the working directory you would like for the command to be executed in. 
-                   # If the option isn't passed, the command is executed in a temporary directory.
-                   # It was added in Airflow 2.2
+    cwd=dag.folder 
+# or:cwd= '/mnt/c/Users/Nader Hachana/OneDrive/Documents/Projects/ETL_Pipeline_Airflow'
+# this way its easier without needing to change the dags_folder in airflow.cfg
 )
 
 extract_data_from_csv= BashOperator(
     task_id='extract_data_from_csv',
     bash_command='cut -d"," -f1-4 ./data/vehicle-data.csv > ./data/extracted_data/csv_data.csv',
     dag=dag,
-    cwd=dag.folder
+    cwd=dag.folder # the cwd option is to set the working directory you would like for the command to be executed in. 
+                   # If the option isn't passed, the command is executed in a temporary directory.
+                   # It was added in Airflow 2.2
 )
 
 extract_data_from_tsv= BashOperator(
